@@ -1,4 +1,4 @@
-export  const defaultTheme = {
-    primary: 'purple',
-    secondary: 'orange',
+export const defaultTheme = {
+  primary: 'purple',
+  secondary: 'orange',
 }

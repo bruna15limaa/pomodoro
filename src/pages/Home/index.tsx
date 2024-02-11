@@ -1,4 +1,5 @@
 import { Play } from 'phosphor-react'
+import { useForm } from 'react-hook-form'
 
 import {
   CountdownContainer,
@@ -9,32 +10,34 @@ import {
   StartCountdownButton,
   TaskInput,
 } from './styles'
-import { useState } from 'react'
 
+export function Home() {  
 
+  const { register, handleSubmit, watch } = useForm()
 
-export function Home() {
-  function handleSubmit(event) {
-    event.target.task.value
+  function handleCreateNewCycle(data: any) {
+    console.log(data)
   }
+
+  const task = watch('task')
+  const isSubmitDisable = !task;
 
   return (
     <HomeContainer>
-      <form onSubmit={handleSubmit} action=''>
+      <form onSubmit={handleSubmit(handleCreateNewCycle)} action="">
         <FormContainer>
           <label htmlFor="task">Vou trabalhar em</label>
           <TaskInput
             id="task"
-            name='task'
-            list="task-suggestions"
+             list="task-suggestions"
             placeholder="Dê um nome para o seu projeto"
-            />
+            {...register('task')}
+          />
 
           <datalist id="task-suggestions">
             <option value="Projeto 1"/>
             <option value="Projeto 2"/>
           </datalist>
-    
 
           <label htmlFor="minutesAmount">durante</label>
           <MinutesAmountInput
@@ -44,6 +47,7 @@ export function Home() {
             step={5}
             min={5}
             max={60}
+            {...register('minutesAmount')}
           />
           <span>minutos.</span>
         </FormContainer>
@@ -56,7 +60,7 @@ export function Home() {
           <span>0</span>
         </CountdownContainer>
 
-        <StartCountdownButton disabled={!task} type="submit">
+        <StartCountdownButton disabled={isSubmitDisable} type="submit">
           <Play size={24} />
           Começar
         </StartCountdownButton>

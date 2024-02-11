@@ -14,24 +14,21 @@ import { useState } from 'react'
 
 
 export function Home() {
-  const [task, setTask] = useState('');
-
-  function resetForm() {
-    setTask('')
+  function handleSubmit(event) {
+    event.target.task.value
   }
 
   return (
     <HomeContainer>
-      <form>
+      <form onSubmit={handleSubmit} action=''>
         <FormContainer>
           <label htmlFor="task">Vou trabalhar em</label>
           <TaskInput
             id="task"
+            name='task'
             list="task-suggestions"
             placeholder="Dê um nome para o seu projeto"
-            onChange={(e) => setTask(e.target.value)}
-            value={task}
-          />
+            />
 
           <datalist id="task-suggestions">
             <option value="Projeto 1"/>

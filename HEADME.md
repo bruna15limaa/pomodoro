@@ -42,8 +42,8 @@ O Pomodoro é trabalhar em uma tarefa posum tempo específico  e depois tira um 
 
 Você pode visualizar o layout do projeto através [DESSE LINK](https://www.figma.com/community/file/1127351821076435124). É necessário ter conta no [Figma](https://figma.com) para acessá-lo.
 
-## Projeto React com Controllers e useState
-Bem-vindo ao repositório do meu projeto React! Este projeto foi desenvolvido com foco na utilização de controllers para gerenciar a lógica de negócios e na implementação eficaz do useState para o gerenciamento de estados locais.
+## Projeto React com Controllers, useState e React Hook Form
+Bem-vindo ao repositório do meu projeto React! Este projeto foi desenvolvido com foco na utilização de controllers para gerenciar a lógica de negócios, no useState para o gerenciamento de estados locais, e no React Hook Form para simplificar a gestão de formulários.
 
 ## Tecnologias Utilizadas
 React: A biblioteca JavaScript para a construção de interfaces de usuário, proporcionando uma abordagem declarativa e eficiente.
@@ -52,7 +52,9 @@ Controllers: Utilize controllers para organizar e modularizar a lógica de negó
 
 useState: Aproveite o poder do hook useState para gerenciar estados locais de forma simples e eficaz, tornando seus componentes React mais dinâmicos.
 
-Estrutura do Projeto
+React Hook Form: Simplifique a gestão de formulários em React com o React Hook Form, uma biblioteca que oferece uma abordagem eficiente e declarativa para lidar com validações, envio e manipulação de dados de formulários.
+
+## Estrutura do Projeto
 markdown
 Copy code
 /src
@@ -62,18 +64,20 @@ Copy code
   /controllers
     - ControladorPrincipal.js
     - OutroControlador.js
+  /forms
+    - FormularioExemplo.js
   /utils
     - utilitario.js
 /src/styles
   - styles.css
-Explore a estrutura do projeto para entender como os controllers são integrados aos componentes e como o useState é utilizado para gerenciar estados.
+Explore a estrutura do projeto para entender como os controllers são integrados aos componentes, como o useState é utilizado para gerenciar estados e como o React Hook Form é implementado para simplificar a gestão de formulários.
 
 Como Utilizar
 Clone este repositório:
 
 bash
 Copy code
-git clone https://github.com/bruna15limaa/pomodoro
+git clone https://github.com/seu-usuario/seu-projeto.git
 Instale as dependências:
 
 bash
@@ -85,20 +89,14 @@ Inicie o aplicativo:
 bash
 Copy code
 npm start
-Agora você está pronto para explorar o projeto e verificar como os controllers e o useState são implementados.
+Agora você está pronto para explorar o projeto e verificar como controllers, useState e React Hook Form são integrados.
 
-Contribuições
+## Contribuições
 Contribuições são bem-vindas! Se você encontrar problemas, bugs ou tiver sugestões para melhorias, sinta-se à vontade para abrir issues ou enviar pull requests.
 
-Obrigado por explorar este repositório! Espero que as práticas utilizando controllers e o useState sejam úteis para o seu desenvolvimento em React.
+Obrigado por explorar este repositório! Espero que as práticas utilizando controllers, useState e React Hook Form sejam úteis para o seu desenvolvimento em React.
 
 Adapte conforme necessário para refletir os detalhes específicos do seu projeto.
-
-
-
-
-
-
 
 
 ## Licença

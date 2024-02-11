@@ -42,8 +42,8 @@ O Pomodoro é trabalhar em uma tarefa posum tempo específico  e depois tira um 
 
 Você pode visualizar o layout do projeto através [DESSE LINK](https://www.figma.com/community/file/1127351821076435124). É necessário ter conta no [Figma](https://figma.com) para acessá-lo.
 
-## Projeto React com Controllers, useState e React Hook Form
-Bem-vindo ao repositório do meu projeto React! Este projeto foi desenvolvido com foco na utilização de controllers para gerenciar a lógica de negócios, no useState para o gerenciamento de estados locais, e no React Hook Form para simplificar a gestão de formulários.
+## Projeto React com Controllers, useState, React Hook Form e Zod
+Bem-vindo ao repositório do meu projeto React! Este projeto foi desenvolvido com foco na utilização de controllers para gerenciar a lógica de negócios, useState para o gerenciamento de estados locais, React Hook Form para simplificar a gestão de formulários, e a biblioteca Zod para validar dados de forma eficaz.
 
 ## Tecnologias Utilizadas
 React: A biblioteca JavaScript para a construção de interfaces de usuário, proporcionando uma abordagem declarativa e eficiente.
@@ -53,6 +53,8 @@ Controllers: Utilize controllers para organizar e modularizar a lógica de negó
 useState: Aproveite o poder do hook useState para gerenciar estados locais de forma simples e eficaz, tornando seus componentes React mais dinâmicos.
 
 React Hook Form: Simplifique a gestão de formulários em React com o React Hook Form, uma biblioteca que oferece uma abordagem eficiente e declarativa para lidar com validações, envio e manipulação de dados de formulários.
+
+Zod: Utilize a biblioteca Zod para realizar validações de forma eficaz, garantindo a integridade dos dados em seu aplicativo.
 
 ## Estrutura do Projeto
 markdown
@@ -70,7 +72,7 @@ Copy code
     - utilitario.js
 /src/styles
   - styles.css
-Explore a estrutura do projeto para entender como os controllers são integrados aos componentes, como o useState é utilizado para gerenciar estados e como o React Hook Form é implementado para simplificar a gestão de formulários.
+Explore a estrutura do projeto para entender como os controllers são integrados aos componentes, como o useState é utilizado para gerenciar estados, como o React Hook Form é implementado para simplificar a gestão de formulários e como a biblioteca Zod é utilizada para validação de dados.
 
 Como Utilizar
 Clone este repositório:
@@ -89,14 +91,18 @@ Inicie o aplicativo:
 bash
 Copy code
 npm start
-Agora você está pronto para explorar o projeto e verificar como controllers, useState e React Hook Form são integrados.
+Agora você está pronto para explorar o projeto e verificar como controllers, useState, React Hook Form e a biblioteca Zod são integrados.
 
 ## Contribuições
 Contribuições são bem-vindas! Se você encontrar problemas, bugs ou tiver sugestões para melhorias, sinta-se à vontade para abrir issues ou enviar pull requests.
 
-Obrigado por explorar este repositório! Espero que as práticas utilizando controllers, useState e React Hook Form sejam úteis para o seu desenvolvimento em React.
+Obrigado por explorar este repositório! Espero que as práticas utilizando controllers, useState, React Hook Form e Zod sejam úteis para o seu desenvolvimento em React.
 
 Adapte conforme necessário para refletir os detalhes específicos do seu projeto.
+
+
+
+
 
 
 ## Licença

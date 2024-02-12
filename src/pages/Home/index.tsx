@@ -34,7 +34,7 @@ interface Cycle {
 
 // eslint-disable-next-line prettier/prettier
 export function Home() {  
-  const [cycles, setCycles] = useState<Cycles[]>([]);
+  const [cycles, setCycles] = useState<Cycle[]>([]);
   const [activeCyclesId, setActiveCyclesId] = useState<string | null>(null);   
   const [amoutSecondPassed, setAmoutSecondPassed] = useState(0);
 
@@ -61,14 +61,14 @@ export function Home() {
       }
 
       return () => {
-          clearInterval(interval);
+      clearInterval(interval)
     }
   }, [activeCycle])
 
   function handleCreateNewCycle(data: NewCycleFormData) {
     const id = String(new Date().getTime())
 
-    const newCycle: Cycles = {
+    const newCycle: Cycle = {
       id: String(new Date().getTime()),
       task: data.task,
       minutesAmount: data.minutesAmount,
@@ -76,9 +76,10 @@ export function Home() {
 
   }
 
-    setCycles((state) => [...state, newCycle])
-    setActiveCyclesId(String(new Date().getTime()))
-    reset()
+  setCycles((state) => [...state, newCycle]);
+  setActiveCyclesId(String(new Date().getTime()));
+  reset();
+
   }
 
   const totalSecond = activeCycle ? activeCycle.minutesAmount * 60 : 0;

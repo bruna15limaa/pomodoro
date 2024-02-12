@@ -25,7 +25,7 @@ const newCycleFormValidationSchema = zod.object({
 
 type NewCycleFormData = zod.infer<typeof newCycleFormValidationSchema>
 
-interface Cycle {
+interface Cycles {
   id: string
   task: string
   minutesAmount: number
@@ -34,9 +34,9 @@ interface Cycle {
 
 // eslint-disable-next-line prettier/prettier
 export function Home() {  
-  const [cycles, setCycles] = useState<Cycle[]>([]);
-  const [activeCyclesId, setActiveCyclesId] = useState<string | null>(null);   
-  const [amoutSecondPassed, setAmoutSecondPassed] = useState(0);
+  const [cycles, setCycles] = useState<Cycles[]>([])
+  const [activeCyclesId, setActiveCyclesId] = useState<string | null>(null)
+  const [amoutSecondPassed, setAmoutSecondPassed] = useState(0)
 
   const { register, handleSubmit, watch, reset } = useForm<NewCycleFormData>({
     resolver: zodResolver(newCycleFormValidationSchema),
@@ -46,43 +46,39 @@ export function Home() {
     },
   })
 
-  const activeCycle = cycles.find((cycle) => cycle.id == activeCyclesId);   
+  // eslint-disable-next-line eqeqeq
+  const activeCycle = cycles.find((cycle) => cycle.id == activeCyclesId)
 
   useEffect(() => {
     let interval: number
 
-      if (activeCycle) {
+    if (activeCycle) {
       interval = setInterval(() => {
         setAmoutSecondPassed(
           differenceInSeconds(new Date(), activeCycle.startDate),
         )
       }, 1000)
+    }
 
-      }
-
-      return () => {
+    return () => {
       clearInterval(interval)
     }
   }, [activeCycle])
 
   function handleCreateNewCycle(data: NewCycleFormData) {
-    const id = String(new Date().getTime())
-
-    const newCycle: Cycle = {
+    const newCycle: Cycles = {
       id: String(new Date().getTime()),
       task: data.task,
       minutesAmount: data.minutesAmount,
       startDate: new Date(),
+    }
 
+    setCycles((state) => [...state, newCycle])
+    setActiveCyclesId(String(new Date().getTime()))
+    reset()
   }
 
-  setCycles((state) => [...state, newCycle]);
-  setActiveCyclesId(String(new Date().getTime()));
-  reset();
-
-  }
-
-  const totalSecond = activeCycle ? activeCycle.minutesAmount * 60 : 0;
+  const totalSecond = activeCycle ? activeCycle.minutesAmount * 60 : 0
   const currentSecond = activeCycle ? totalSecond - amoutSecondPassed : 0
 
   const minutesAmount = Math.floor(currentSecond / 60)

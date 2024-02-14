@@ -32,13 +32,14 @@ interface Cycle {
   task: string
   minutesAmount: number
   startDate: Date
+  interruptedDate?: Date
 }
 
 // eslint-disable-next-line prettier/prettier
 export function Home() {  
   const [cycles, setCycles] = useState<Cycle[]>([])
   const [activeCyclesId, setActiveCycleId] = useState<string | null>(null)
-  const [amoutSecondPassed, setAmoutSecondPassed] = useState(0)
+  const [amoutSecondsPassed, setAmoutSecondsPassed] = useState(0)
 
   const { register, handleSubmit, watch, reset } = useForm<NewCycleFormData>({
     resolver: zodResolver(newCycleFormValidationSchema),
@@ -56,7 +57,7 @@ export function Home() {
 
     if (activeCycle) {
       interval = setInterval(() => {
-        setAmoutSecondPassed(
+        setAmoutSecondsPassed(
           differenceInSeconds(new Date(), activeCycle.startDate),
         )
       }, 1000)
@@ -86,7 +87,7 @@ export function Home() {
 
 
   const totalSecond = activeCycle ? activeCycle.minutesAmount * 60 : 0
-  const currentSecond = activeCycle ? totalSecond - amoutSecondPassed : 0
+  const currentSecond = activeCycle ? totalSecond - amoutSecondsPassed : 0
 
   const minutesAmount = Math.floor(currentSecond / 60)
   const secondAmount = minutesAmount % 60 // o Resto de 60 minutos

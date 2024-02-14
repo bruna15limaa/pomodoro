@@ -27,7 +27,7 @@ const newCycleFormValidationSchema = zod.object({
 type NewCycleFormData = zod.infer<typeof newCycleFormValidationSchema>
 
 
-interface Cycles {
+interface Cycle {
   id: string
   task: string
   minutesAmount: number
@@ -36,7 +36,7 @@ interface Cycles {
 
 // eslint-disable-next-line prettier/prettier
 export function Home() {  
-  const [cycles, setCycles] = useState<Cycles[]>([])
+  const [cycles, setCycles] = useState<Cycle[]>([])
   const [activeCyclesId, setActiveCycleId] = useState<string | null>(null)
   const [amoutSecondPassed, setAmoutSecondPassed] = useState(0)
 
@@ -68,7 +68,7 @@ export function Home() {
   }, [activeCycle])
 
   function handleCreateNewCycle(data: NewCycleFormData) {
-    const newCycle: Cycles = {
+    const newCycle: Cycle = {
       id: String(new Date().getTime()),
       task: data.task,
       minutesAmount: data.minutesAmount,
@@ -81,7 +81,7 @@ export function Home() {
   }
 
   function handleInterruptCycle() {
-
+    setActiveCycleId(null)
   }
 
 

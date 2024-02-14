@@ -26,6 +26,7 @@ const newCycleFormValidationSchema = zod.object({
 
 type NewCycleFormData = zod.infer<typeof newCycleFormValidationSchema>
 
+
 interface Cycles {
   id: string
   task: string
@@ -36,7 +37,7 @@ interface Cycles {
 // eslint-disable-next-line prettier/prettier
 export function Home() {  
   const [cycles, setCycles] = useState<Cycles[]>([])
-  const [activeCyclesId, setActiveCyclesId] = useState<string | null>(null)
+  const [activeCyclesId, setActiveCycleId] = useState<string | null>(null)
   const [amoutSecondPassed, setAmoutSecondPassed] = useState(0)
 
   const { register, handleSubmit, watch, reset } = useForm<NewCycleFormData>({
@@ -75,9 +76,14 @@ export function Home() {
     }
 
     setCycles((state) => [...state, newCycle])
-    setActiveCyclesId(String(new Date().getTime()))
+    setActiveCycleId(String(new Date().getTime()))
     reset()
   }
+
+  function handleInterruptCycle() {
+
+  }
+
 
   const totalSecond = activeCycle ? activeCycle.minutesAmount * 60 : 0
   const currentSecond = activeCycle ? totalSecond - amoutSecondPassed : 0
@@ -100,6 +106,7 @@ export function Home() {
             id="task"
             list="task-suggestions"
             placeholder="Dê um nome para o seu projeto"
+            disabled={!!activeCycle}
             {...register('task')}
           />
 
@@ -116,6 +123,7 @@ export function Home() {
             step={5}
             min={5}
             max={60}
+            disabled={!!activeCycle}
             {...register('minutesAmount', { valueAsNumber: true })}
           />
           <span>minutos.</span>

@@ -38,7 +38,7 @@ interface Cycle {
 // eslint-disable-next-line prettier/prettier
 export function Home() {  
   const [cycles, setCycles] = useState<Cycle[]>([])
-  const [activeCyclesId, setActiveCycleId] = useState<string | null>(null)
+  const [activeCycleId, setActiveCycleId] = useState<string | null>(null)
   const [amoutSecondsPassed, setAmoutSecondsPassed] = useState(0)
 
   const { register, handleSubmit, watch, reset } = useForm<NewCycleFormData>({

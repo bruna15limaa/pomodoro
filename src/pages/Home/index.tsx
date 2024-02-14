@@ -50,7 +50,7 @@ export function Home() {
   })
 
   // eslint-disable-next-line eqeqeq
-  const activeCycle = cycles.find((cycle) => cycle.id == activeCyclesId)
+  const activeCycle = cycles.find((cycle) => cycle.id == activeCycleId)
 
   useEffect(() => {
     let interval: number

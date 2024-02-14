@@ -33,6 +33,7 @@ interface Cycle {
   minutesAmount: number
   startDate: Date
   interruptedDate?: Date
+  finishedDate?: Date
 }
 
 // eslint-disable-next-line prettier/prettier
@@ -52,21 +53,41 @@ export function Home() {
   // eslint-disable-next-line eqeqeq
   const activeCycle = cycles.find((cycle) => cycle.id == activeCycleId)
 
+  const totalSeconds = activeCycle ? activeCycle.minutesAmount * 60 : 0
+
   useEffect(() => {
     let interval: number
 
     if (activeCycle) {
       interval = setInterval(() => {
-        setAmoutSecondsPassed(
-          differenceInSeconds(new Date(), activeCycle.startDate),
-        )
+        const secondsDifference = differenceInSeconds(
+          new Date(), 
+          activeCycle.startDate
+          )
+
+        if (secondsDifference >= totalSeconds) {
+          setCycles(state => state.map((cycle) => {
+            if (cycle.id === activeCycleId) {
+                return { ...cycle, finishedDate: new Date() }
+            } else {
+              return cycle
+            }
+          }),
+          )
+
+          setAmoutSecondsPassed(totalSeconds)
+
+          clearInterval(interval)
+          } else {
+            setAmoutSecondsPassed(secondsDifference)
+        }
       }, 1000)
     }
 
     return () => {
       clearInterval(interval)
     }
-  }, [activeCycle])
+  }, [activeCycle, totalSeconds, activeCycleId])
 
   function handleCreateNewCycle(data: NewCycleFormData) {
     const newCycle: Cycle = {
@@ -82,8 +103,8 @@ export function Home() {
   }
 
   function handleInterruptCycle() {
-    setCycles(
-      cycles.map((cycle) => {
+    setCycles(state =>
+      state.map((cycle) => {
         if (cycle.id === activeCycleId) {
           return { ...cycle, interruptedDate: new Date() }
         } else {
@@ -95,7 +116,7 @@ export function Home() {
   }
 
 
-  const totalSeconds = activeCycle ? activeCycle.minutesAmount * 60 : 0
+  
   const currentSeconds = activeCycle ? totalSeconds - amoutSecondsPassed : 0
 
   const minutesAmount = Math.floor(currentSeconds / 60)

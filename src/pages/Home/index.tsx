@@ -95,11 +95,11 @@ export function Home() {
   }
 
 
-  const totalSecond = activeCycle ? activeCycle.minutesAmount * 60 : 0
-  const currentSecond = activeCycle ? totalSecond - amoutSecondsPassed : 0
+  const totalSeconds = activeCycle ? activeCycle.minutesAmount * 60 : 0
+  const currentSeconds = activeCycle ? totalSeconds - amoutSecondsPassed : 0
 
-  const minutesAmount = Math.floor(currentSecond / 60)
-  const secondAmount = minutesAmount % 60 // o Resto de 60 minutos
+  const minutesAmount = Math.floor(currentSeconds / 60)
+  const secondAmount = currentSeconds % 60 // o Resto de 60 minutos
 
   const minutes = String(minutesAmount).padStart(2, '0') // o padding start inclui os caracteres dos minutos
   const seconds = String(secondAmount).padStart(2, '0')

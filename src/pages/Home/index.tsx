@@ -110,8 +110,8 @@ export function Home() {
     <HomeContainer>
       <form onSubmit={handleSubmit(handleCreateNewCycle)} action="">
         <CyclesContext.Provider
-          value={
-            {activeCycle,
+          value={{
+            activeCycle,
             activeCycleId,
             markCurrentCycleAsFinished,
             amoutSecondsPassed,

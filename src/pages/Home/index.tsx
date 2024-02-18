@@ -90,21 +90,37 @@ export function Home() {
     reset()
   }
 
-  function handleInterruptCycle() {
-    setCycles(state =>
-      state.map((cycle) => {
-        if (cycle.id === activeCycleId) {
-          return { ...cycle, interruptedDate: new Date() }
-        } else {
-          return cycle
-        }
-      }),
-    )
-    setActiveCycleId(null)
+  function handleCreateNewCycle(data: NewCycleFormData) {
+  
+
+    const id = String(new Date().getTime())
+
+    const newCycle: Cycle = {
+      id,
+      task: data.task,
+      minutesAmount: data.minutesAmount,
+      startDate: new Date(),
+    }
+
+    
+
+    setCycles((state) => [...state, newCycle])
+    setActiveCycleId(id)
+    setAmountSecondsPassed(0)
+
+    reset()
   }
 
+  
   const task = watch('task')
   const isSubmitDisabled = !task
+
+  function handleInterruptCycle(
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    event: MouseEvent<HTMLButtonElement, MouseEvent>,
+  ): void {
+    throw new Error('Function not implemented.')
+  }
 
   return (
     <HomeContainer>

@@ -1,7 +1,10 @@
-
+import { useContext } from 'react'
+import { CyclesContext } from '../../contexts/CyclesContext'
 import { HistoryContainer, HistoryList, Status } from './styles'
 
 export function History() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { cycles } = useContext(CyclesContext)
   return (
     <HistoryContainer>
       <h1>Meu histórico</h1>
@@ -39,7 +42,7 @@ export function History() {
               <td>Há 2 meses</td>
               <td>
                 <Status statusColor="green">Concluído</Status>
-                </td>
+              </td>
             </tr>
             <tr>
               <td>Tarefa</td>
@@ -47,7 +50,7 @@ export function History() {
               <td>Há 2 meses</td>
               <td>
                 <Status statusColor="green">Concluído</Status>
-                </td>
+              </td>
             </tr>
             <tr>
               <td>Tarefa</td>
@@ -63,7 +66,7 @@ export function History() {
               <td>Há 2 meses</td>
               <td>
                 <Status statusColor="yellow">Concluído</Status>
-                </td>
+              </td>
             </tr>
             <tr>
               <td>Tarefa</td>
@@ -71,7 +74,7 @@ export function History() {
               <td>Há 2 meses</td>
               <td>
                 <Status statusColor="yellow">Concluído</Status>
-                </td>
+              </td>
             </tr>
           </tbody>
         </table>

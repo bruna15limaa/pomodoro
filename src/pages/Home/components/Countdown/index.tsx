@@ -9,7 +9,7 @@ export function Countdown() {
     activeCycle,
     activeCycleId,
     markCurrentCycleAsFinished,
-    amoutSecondsPassed,
+    amountSecondsPassed,
     setSecondsPassed,
   } = useContext(CyclesContext)
 
@@ -46,7 +46,7 @@ export function Countdown() {
     markCurrentCycleAsFinished,
   ])
 
-  const currentSeconds = activeCycle ? totalSeconds - amoutSecondsPassed : 0
+  const currentSeconds = activeCycle ? totalSeconds - amountSecondsPassed : 0
 
   const minutesAmount = Math.floor(currentSeconds / 60)
   const secondAmount = currentSeconds % 60 // o Resto de 60 minutos
